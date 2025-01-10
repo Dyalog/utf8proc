@@ -290,17 +290,17 @@ typedef struct utf8proc_property_struct {
    * for a match.
    */
 // DYALOG
+// C standard requires bifields to be ints - xlC is not as forgiving as others
 // Should not be needed when we switch to openxlC
-#if AIX
-  // C standard only allows bifields using ints
+#ifdef __IBMC__
   unsigned comb_index:10;
   unsigned comb_length:5;
   unsigned comb_issecond:1;
-#else // AIX
+#else // __IBMC__
   utf8proc_uint16_t comb_index:10;
   utf8proc_uint16_t comb_length:5;
   utf8proc_uint16_t comb_issecond:1;
-#endif
+#endif // __IBMC__
   unsigned bidi_mirrored:1;
   unsigned comp_exclusion:1;
   /**
