@@ -587,6 +587,24 @@ UTF8PROC_DLLEXPORT utf8proc_ssize_t utf8proc_decompose_custom(
   utf8proc_int32_t *buffer, utf8proc_ssize_t bufsize, utf8proc_option_t options,
   utf8proc_custom_func custom_func, void *custom_data
 );
+// DYALOG
+UTF8PROC_DLLEXPORT utf8proc_ssize_t utf8proc_decompose_custom_uint8_t(
+  const uint8_t *str, utf8proc_ssize_t strlen,
+  utf8proc_int32_t *buffer, utf8proc_ssize_t bufsize, utf8proc_option_t options,
+  utf8proc_custom_func custom_func, void *custom_data
+);
+// DYALOG
+UTF8PROC_DLLEXPORT utf8proc_ssize_t utf8proc_decompose_custom_uint16_t(
+  const uint16_t *str, utf8proc_ssize_t strlen,
+  utf8proc_int32_t *buffer, utf8proc_ssize_t bufsize, utf8proc_option_t options,
+  utf8proc_custom_func custom_func, void *custom_data
+);
+// DYALOG
+UTF8PROC_DLLEXPORT utf8proc_ssize_t utf8proc_decompose_custom_uint32_t(
+  const uint32_t *str, utf8proc_ssize_t strlen,
+  utf8proc_int32_t *buffer, utf8proc_ssize_t bufsize, utf8proc_option_t options,
+  utf8proc_custom_func custom_func, void *custom_data
+);
 
 /**
  * Normalizes the sequence of `length` codepoints pointed to by `buffer`
