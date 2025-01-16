@@ -710,6 +710,14 @@ UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_toupper(utf8proc_int32_t c);
  */
 UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_totitle(utf8proc_int32_t c);
 
+// DYALOG
+/**
+ * Given a codepoint `c`, return the codepoint of the corresponding
+ * case-folded character, if any; otherwise (if there is no case-folded
+ * variant, or if `c` is not a valid codepoint) return `c`.
+ */
+UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_fold(utf8proc_int32_t c);
+
 /**
  * Given a codepoint `c`, return `1` if the codepoint corresponds to a lower-case character
  * and `0` otherwise.

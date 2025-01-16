@@ -414,6 +414,13 @@ UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_totitle(utf8proc_int32_t c)
   return cu != UINT16_MAX ? seqindex_decode_index((utf8proc_uint32_t)cu) : c;
 }
 
+// DYALOG
+UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_fold(utf8proc_int32_t c)
+{
+  utf8proc_int32_t cu = utf8proc_get_property(c)->casefold_seqindex;
+  return cu != UINT16_MAX ? seqindex_decode_index((utf8proc_uint32_t)cu) : c;
+}
+
 UTF8PROC_DLLEXPORT int utf8proc_islower(utf8proc_int32_t c)
 {
   const utf8proc_property_t *p = utf8proc_get_property(c);
