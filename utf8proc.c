@@ -415,10 +415,20 @@ UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_totitle(utf8proc_int32_t c)
 }
 
 // DYALOG
+// This function does not exist in the standard library. It is almost analagous
+// to the upper/lower/title functions above, but has one important distinction:
+// the seqindex value for folding also encodes a length in the top two bits
+// (0=len 1, etc). This function should only return 1:1 mappings, so the char
+// /c/ is returned unchaged if the length bits are non-zero. A sequindex value
+// of UINT16_MAX still indicates that the character is not in the tables, but
+// does not need to be separately handled because the length check also catches
+// it. See seqindex_write_char_decomposed() for more explanation of the length
+// bits, and note that this is called only with folded and decomposed
+// (normalised) index values.
 UTF8PROC_DLLEXPORT utf8proc_int32_t utf8proc_fold(utf8proc_int32_t c)
 {
   utf8proc_int32_t cu = utf8proc_get_property(c)->casefold_seqindex;
-  return cu != UINT16_MAX ? seqindex_decode_index((utf8proc_uint32_t)cu) : c;
+  return ((cu >> 14) == 0) ? seqindex_decode_index((utf8proc_uint32_t)cu) : c;
 }
 
 UTF8PROC_DLLEXPORT int utf8proc_islower(utf8proc_int32_t c)
